@@ -38,7 +38,7 @@ const Photos = () => {
     <Spin spinning={queryByPageLoading}>
       <div className="container">
         <div className="header">
-          <div className="left">个人摄影作品展</div>
+          <div className="left">个人摄影作品展1</div>
           {/* <Menu
           theme={"dark"}
           onClick={onClick}
