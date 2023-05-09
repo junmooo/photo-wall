@@ -7,7 +7,7 @@ import { Album, AlbumVO, Photo } from "@/types";
 import moment from "moment";
 import { getPreUrl } from "@/utils/common";
 
-const Demo = () => {
+const Photos = () => {
   const [current, setCurrent] = useState<Photo[]>();
   const [visible, setVisible] = useState(false);
   const [data, setData] = useState<Album[]>([]);
@@ -111,4 +111,4 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default Photos;
