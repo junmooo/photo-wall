@@ -1,0 +1,41 @@
+body {
+  display: grid;
+  grid-template-columns: 50vw;
+  justify-content: center;
+  overflow-x: hidden;
+  margin-bottom: 3em;
+
+  h2 {
+    justify-self: center;
+    margin: 3em 0;
+    font: 1em monospace;
+  }
+
+  .waterfall {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(133px, 1fr));
+    grid-gap: 0.25em;
+    grid-auto-flow: row dense;
+    grid-auto-rows: 20px;
+
+    .item {
+      border: 1px solid;
+
+      img {
+        width: minmax(133px, 1fr)
+      }
+    }
+
+    .item:nth-of-type(3n + 1) {
+      grid-row: auto / span 5;
+    }
+
+    .item:nth-of-type(3n + 2) {
+      grid-row: auto / span 6;
+    }
+
+    .item:nth-of-type(3n + 3) {
+      grid-row: auto / span 8;
+    }
+  }
+}

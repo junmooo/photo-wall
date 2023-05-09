@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Document</title>
+
+    <script src="http://unpkg.com/vue/dist/vue.js"></script>
+
+    <script src="http://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
+
+    <style>
+      .masonry {
+        display: grid;
+
+        grid-template-columns: 1fr1fr1fr;
+
+        column-gap: 5px;
+
+        grid-auto-rows: 10px;
+      }
+
+      .item {
+        grid-row-start: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="masonry" id="app">
+      <img
+        ref="imgs"
+        class="item"
+        :url="i.img"
+        height="100%"
+        width="100%"
+        :key="i.id"
+        v-for="iindata"
+      />
+    </div>
+  </body>
+
+  <script>
+    var Main = {
+      mounted() {
+        Array.from(this.$refs.imgs).forEach(function (img, index) {
+          let src = img.getAttribute("url");
+
+          let image = new Image();
+
+          image.src = src;
+
+          let width = img.width;
+
+          image.onload = function () {
+            let w = image.width;
+
+            let h = image.height;
+
+            let height = Math.round((h * width) / w);
+
+            img.src = src;
+
+            img.style.gridRowEnd = `span${~~(height / 10)}`;
+          };
+        });
+      },
+
+      data() {
+        return {
+          data: [],
+        };
+      },
+    };
+
+    var Ctor = Vue.extend(Main);
+
+    new Ctor().$mount("#app");
+  </script>
+</html>

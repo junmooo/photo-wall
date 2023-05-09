@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>实现瀑布流</title>
+  </head>
+  <body>
+    <div id="content-wrap"></div>
+    <script>
+      (function () {
+        var wrap = document.getElementById("content-wrap");
+        for (var i = 0; i < 18; i++) {
+          // 2.2flex布局：蛋疼（行与行是平行的）
+          // var itemWrap = document.createElement('div');
+          // itemWrap.setAttribute('class', 'item-wrap');
+          // var item = document.createElement('div');
+          // item.setAttribute('class', 'item');
+          // itemWrap.append(item);
+          // var itemChild = document.createElement('div');
+          // itemChild.setAttribute('class', 'item-single');
+          // item.append(itemChild);
+          // itemChild.innerText = i+1;
+          // wrap.append(itemWrap);
+          //3.grid布局
+          var item = document.createElement("div");
+          item.setAttribute("class", "item");
+          var itemChild = document.createElement("div");
+          itemChild.setAttribute("class", "item-single");
+          item.append(itemChild);
+          itemChild.innerText = i + 1;
+          wrap.append(item);
+        }
+      })();
+    </script>
+  </body>
+  <style>
+    .item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid red;
+      color: red;
+    }
+    /* 1.多列布局  2.1flex布局：蛋疼（设定外容器的高度） */
+    /* .item:nth-child(3),
+    .item:nth-child(14),
+    .item:nth-child(17),
+    .item:nth-child(24),
+    .item:nth-child(28),
+    .item:nth-child(29),
+    .item:nth-child(31),
+    .item:nth-child(42){
+        height: 50px;
+        border: 1px solid gray;
+        color: gray;
+    }
+    .item:nth-child(4),
+    .item:nth-child(19),
+    .item:nth-child(22),
+    .item:nth-child(27),
+    .item:nth-child(35),
+    .item:nth-child(45){
+        height: 180px;
+        border: 1px solid yellowgreen;
+        color: yellowgreen;
+    }
+    .item:nth-child(8),
+    .item:nth-child(23),
+    .item:nth-child(38),
+    .item:nth-child(42),
+    .item:nth-child(46),
+    .item:nth-child(49){
+        height: 200px;
+        border: 1px solid blue;
+        color: blue;
+    } */
+    /* 1.多列布局*/
+    /* #content-wrap{
+        column-count: 5;
+        column-gap: 30px;
+    }
+    .item{
+        break-inside: avoid;
+    } */
+    /* 2.1flex布局：蛋疼（设定外容器的高度） */
+    /* #content-wrap {
+        display: flex;
+        flex-flow: column wrap;
+        width: 100%;
+        height: 100vh;
+    } */
+    /* 2.2flex布局：蛋疼（行与行是平行的） */
+    /* .item-wrap:nth-child(14) .item,
+    .item-wrap:nth-child(17) .item,
+    .item-wrap:nth-child(24) .item,
+    .item-wrap:nth-child(28) .item,
+    .item-wrap:nth-child(29) .item,
+    .item-wrap:nth-child(31) .item,
+    .item-wrap:nth-child(42) .item{
+        height: 50px;
+        border: 1px solid gray;
+        color: gray;
+    }
+    .item-wrap:nth-child(4) .item,
+    .item-wrap:nth-child(19) .item,
+    .item-wrap:nth-child(22) .item,
+    .item-wrap:nth-child(27) .item,
+    .item-wrap:nth-child(35) .item,
+    .item-wrap:nth-child(45) .item{
+        height: 180px;
+        border: 1px solid yellowgreen;
+        color: yellowgreen;
+    }
+    .item-wrap:nth-child(8) .item,
+    .item-wrap:nth-child(23) .item,
+    .item-wrap:nth-child(38) .item,
+    .item-wrap:nth-child(42) .item,
+    .item-wrap:nth-child(46) .item,
+    .item-wrap:nth-child(49) .item{
+        height: 200px;
+        border: 1px solid blue;
+        color: blue;
+    }
+    #content-wrap{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .item-wrap{
+        display: flex;
+        flex-direction: column;
+        width: calc(100%/6);
+    }  */
+    /* 3.grid布局 */
+    #content-wrap {
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 10px;
+      grid-auto-flow: row dense;
+    }
+    .item-wrap {
+    }
+    .item:nth-child(7) {
+      grid-column: 2/5;
+      grid-row: 3/5;
+    }
+    .item:nth-child(9) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  </style>
+</html>
