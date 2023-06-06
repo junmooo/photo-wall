@@ -106,6 +106,11 @@ const Photos = () => {
             </Image.PreviewGroup>
           </div>
         </div>
+        <div className="footer">
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">
+            苏ICP备2023005422号
+          </a>
+        </div>
       </div>
     </Spin>
   );

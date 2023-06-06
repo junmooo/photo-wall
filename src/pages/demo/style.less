@@ -22,7 +22,7 @@
 
   .body {
     width: 100%;
-    height: calc(100vh - 47px);
+    height: calc(100vh - 67px);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 
@@ -77,12 +77,26 @@
           // box-shadow: 1px 1px 10px #ccc;
           border-radius: 15px;
           width: calc(75vw - 50px);
-          height: calc(100vh - 100px);
+          height: calc(100vh - 120px);
           object-fit: contain;
         }
       }
     }
 
+  }
+
+  .footer {
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    background-color: rgb(0, 0, 0, 0.2);
+
+    a {
+      color: #ccc;
+    }
+
+    margin-bottom: 10px;
   }
 }
 
